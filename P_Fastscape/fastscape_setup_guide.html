@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fastscape Landscape Evolution – Student Setup Guide</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --card: #0b1220;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --brand: #22d3ee;
+      --accent: #a78bfa;
+      --ok: #34d399;
+      --warn: #fbbf24;
+      --bad: #f87171;
+      --code-bg: #0b1020;
+      --code-border: #1f2937;
+    }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--text); font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji'; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+    header { margin-bottom: 2rem; }
+    h1 { font-size: clamp(1.6rem, 1.2rem + 2.5vw, 2.6rem); line-height:1.15; letter-spacing: .2px; }
+    h1 .eyebrow { display:block; font-size:.9rem; color:var(--muted); font-weight:600; letter-spacing:.18em; text-transform:uppercase; margin-bottom:.35rem }
+    h2 { font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem); margin-top: 2.25rem; border-left: 4px solid var(--brand); padding-left: .75rem; }
+    h3 { font-size: 1.05rem; color: var(--accent); margin-top: 1.5rem; }
+
+    .lead { color:#c7d2fe; max-width: 70ch; }
+
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid var(--code-border); border-radius: 16px; padding: 1.1rem 1rem; margin: 1rem 0; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    .grid { display:grid; gap:1rem; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); }
+    .pill { display:inline-flex; align-items:center; gap:.5rem; font-size:.85rem; color:var(--bg); background: var(--brand); padding: .25rem .6rem; border-radius:999px; font-weight:700 }
+    .kb { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background:var(--panel); padding:.05rem .45rem; border-radius:6px; border:1px solid var(--code-border); color:#e5e7eb }
+
+    pre { background: var(--code-bg); border: 1px solid var(--code-border); padding: 1rem; border-radius: 12px; overflow: auto; position:relative; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:.95rem; }
+    .copy { position:absolute; top:.6rem; right:.6rem; background:transparent; border:1px solid var(--code-border); color:var(--muted); padding:.25rem .5rem; border-radius:8px; cursor:pointer }
+    .note { border-left: 4px solid var(--accent); padding:.5rem .75rem; background:rgba(167,139,250,.08); color:#e9d5ff; border-radius:8px; }
+    .ok { border-left: 4px solid var(--ok); background: rgba(52,211,153,.08); color:#bbf7d0 }
+
+    a { color: var(--brand); text-decoration: none; border-bottom:1px dashed transparent }
+    a:hover { border-bottom-color: var(--brand) }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1><span class="eyebrow">Fastscape Practical</span> Fastscape Landscape Evolution – Student Setup Guide</h1>
+      <p class="lead">Follow these steps to install a reliable, class-wide environment for the Fastscape landscape evolution practical. Commands are provided for Windows, macOS, and Linux.</p>
+      <div class="card"><strong>What you’ll need</strong>
+        <ul>
+          <li>The course repository from GitHub: <a href="https://github.com/Richard-Ott/LandscapeDymamics">LandscapeDynamics Repository</a></li>
+          <li>This environment file: <span class="kb">initiate.yml</span> (located in the <span class="kb">P_Fastscape</span> folder of the repository)</li>
+        </ul>
+      </div>
+    </header>
+
+    <h2>Download the Course Repository</h2>
+    <div class="card">
+      <p><strong>Option A: ZIP download (simplest)</strong></p>
+      <ol>
+        <li>Go to <a href="https://github.com/Richard-Ott/LandscapeDymamics">LandscapeDynamics GitHub repository</a>.</li>
+        <li>Click <em>Code ▸ Download ZIP</em>.</li>
+        <li>Unzip to a folder you can find, e.g., <span class="kb">Documents\\fastscape-practical</span>.</li>
+      </ol>
+      <p><strong>Option B: Clone with Git</strong></p>
+      <pre><button class="copy" data-copy>Copy</button><code>git clone https://github.com/Richard-Ott/LandscapeDymamics.git
+cd LandscapeDymamics</code></pre>
+    </div>
+
+    <h2>Step 1 — Install Miniforge or Miniconda (one-time)</h2>
+    <div class="card">
+      <p>Install <strong>Miniforge</strong> for your OS (Windows/macOS/Linux). It’s a minimal Conda distribution preconfigured for the <em>conda-forge</em> channel.</p>
+      <ul>
+        <li><strong>Miniforge:</strong> <a href="https://conda-forge.org/download/">conda-forge.org/download</a></li>
+        <li><strong>Miniconda alternative:</strong> <a href="https://www.anaconda.com/download/success">Miniconda installer</a></li>
+      </ul>
+      <p class="note">Already have Anaconda/Miniconda? You can keep it. Using Miniforge is recommended for reproducible, conda-forge-only environments.</p>
+      <h3>(Nice to have) Install <em>mamba</em> in base</h3>
+      <p>Run this command in <strong>Anaconda Prompt</strong> (Windows) or <strong>Terminal</strong> (macOS/Linux):</p>
+      <pre><button class="copy" data-copy>Copy</button><code>conda install -n base -c conda-forge mamba</code></pre>
+    </div>
+
+    <h2>Step 2 — Locate the Environment File</h2>
+    <div class="card">
+      <p>The <span class="kb">initiate.yml</span> file is provided in the <span class="kb">P_Fastscape</span> folder of the repository you downloaded. Use this file to create your environment.</p>
+    </div>
+
+    <h2>Step 3 — Create the Conda Environment</h2>
+    <div class="card">
+      <p>
+        <span class="pill">Windows</span>
+      </p>
+      <ol>
+        <li>Open <strong>Anaconda Prompt</strong>.</li>
+        <li>Navigate to the <span class="kb">P_Fastscape</span> folder inside the repository:</li>
+        <pre><button class="copy" data-copy>Copy</button><code>cd %HOMEPATH%\Documents\LandscapeDymamics\P_Fastscape</code></pre>
+        <li>Create the environment (name it <code>fastscape-class</code>):
+          <pre><button class="copy" data-copy>Copy</button><code>mamba env create -f initiate.yml -n fastscape-class</code></pre>
+          <p>If you don’t have mamba yet, use:</p>
+          <pre><button class="copy" data-copy>Copy</button><code>conda env create -f initiate.yml -n fastscape-class</code></pre>
+        </li>
+        <li>Activate it and launch Jupyter:
+          <pre><button class="copy" data-copy>Copy</button><code>conda activate fastscape-class
+jupyter notebook</code></pre>
+        </li>
+      </ol>
+
+      <p>
+        <span class="pill">macOS / Linux</span>
+      </p>
+      <ol>
+        <li>Open the <strong>Terminal</strong> app.</li>
+        <li>Go to the <span class="kb">P_Fastscape</span> folder inside the repository:
+          <pre><button class="copy" data-copy>Copy</button><code>cd ~/Documents/LandscapeDymamics/P_Fastscape</code></pre>
+        </li>
+        <li>Create the environment (name <code>fastscape-class</code>):
+          <pre><button class="copy" data-copy>Copy</button><code>mamba env create -f initiate.yml -n fastscape-class</code></pre>
+          <p>No mamba?</p>
+          <pre><button class="copy" data-copy>Copy</button><code>conda env create -f initiate.yml -n fastscape-class</code></pre>
+        </li>
+        <li>Activate and launch Jupyter:
+          <pre><button class="copy" data-copy>Copy</button><code>conda activate fastscape-class
+jupyter notebook</code></pre>
+        </li>
+      </ol>
+
+      <div class="note ok">
+        <strong>Tip:</strong> You can also start JupyterLab if included: <code>jupyter lab</code>.
+      </div>
+    </div>
+
+    <h2>Step 4 — Open the Practical Notebook</h2>
+    <div class="card">
+      <ol>
+        <li>In the Jupyter file browser, navigate into the folder you downloaded (e.g., <code>LandscapeDymamics/notebooks</code>).</li>
+        <li>Open the practical notebook (e.g., <code>01_fastscape_practical.ipynb</code>).</li>
+        <li>The import check will run automatically in the first lines of the notebook when you import all the modules.</li>
+      </ol>
+    </div>
+
+    <footer>
+      <p>Prepared for the Fastscape practical. If you hit an issue not listed here, share the exact error message and your OS in the class forum/issue tracker.</p>
+    </footer>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('[data-copy]');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.nextElementSibling.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          const old = btn.textContent; btn.textContent = 'Copied!';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
